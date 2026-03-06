@@ -1,0 +1,2536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perspectives Group | Educational Therapy Los Angeles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   PERSPECTIVES GROUP — LUXURY REDESIGN
+   ============================================= */
+
+:root {
+  --plum:        #1C0120;
+  --plum-mid:    #361039;
+  --plum-light:  #541a5c;
+  --cream:       #FDFCF3;
+  --cream-warm:  #F7F5E9;
+  --cream-dark:  #EAE6D4;
+  --gold:        #BE9A52;
+  --gold-light:  #DEC898;
+  --gold-muted:  rgba(190,154,82,0.09);
+  --text-dark:   #0f0013;
+  --text-mid:    #361039;
+  --text-muted:  #7e6d7c;
+  --shadow:      0 8px 64px rgba(28,1,32,0.07);
+  --shadow-strong: 0 24px 90px rgba(28,1,32,0.13);
+  --transition:  all 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --fast:        0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============ BASE ============ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--cream);
+  color: var(--text-dark);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream-warm); }
+::-webkit-scrollbar-thumb { background: var(--gold-light); }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* Selection */
+::selection { background: rgba(190,154,82,0.2); color: var(--plum); }
+
+/* ============ CURSOR ============ */
+* { cursor: none; }
+#lux-cursor {
+  position: fixed;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s ease, height 0.25s ease, opacity 0.25s ease;
+  mix-blend-mode: multiply;
+}
+#lux-cursor-ring {
+  position: fixed;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(190,154,82,0.45);
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s ease, width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+}
+body:not(:hover) #lux-cursor,
+body:not(:hover) #lux-cursor-ring { opacity: 0; }
+
+/* ============ TYPOGRAPHY ============ */
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--plum);
+  letter-spacing: -0.02em;
+}
+h1 { font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 200; }
+h2 { font-size: clamp(2.2rem, 4.5vw, 4rem); }
+h3 { font-size: clamp(1.6rem, 2.8vw, 2.4rem); }
+h4 { font-size: clamp(1.2rem, 2vw, 1.65rem); }
+p  { font-size: 1rem; line-height: 1.85; color: #4d3b4b; }
+a  { color: inherit; text-decoration: none; }
+
+em { font-style: italic; }
+
+/* ============ LAYOUT ============ */
+.container       { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
+.container-wide  { max-width: 1440px; margin: 0 auto; padding: 0 2.5rem; }
+.section    { padding: 9rem 0; }
+.section-sm { padding: 5.5rem 0; }
+.section-lg { padding: 13rem 0; }
+
+/* ============ NAVIGATION ============ */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  transition: var(--transition);
+}
+#nav.scrolled {
+  background: rgba(253,252,243,0.96);
+  backdrop-filter: blur(20px) saturate(1.3);
+  box-shadow: 0 1px 0 rgba(28,1,32,0.07), 0 4px 24px rgba(28,1,32,0.04);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.6rem 3rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.nav-logo img {
+  height: 50px;
+  width: auto;
+  display: block;
+  transition: var(--fast);
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.8rem;
+  list-style: none;
+}
+.nav-links a, .nav-links button {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.82);
+  background: none;
+  border: none;
+  cursor: none;
+  padding: 0.3rem 0;
+  position: relative;
+  transition: var(--fast);
+}
+#nav.scrolled .nav-links a,
+#nav.scrolled .nav-links button { color: var(--plum-mid); }
+
+.nav-links a::after, .nav-links button::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.nav-links a:hover::after, .nav-links button:hover::after { transform: scaleX(1); }
+.nav-links a:hover, .nav-links button:hover { color: var(--gold); }
+#nav.scrolled .nav-links a:hover,
+#nav.scrolled .nav-links button:hover { color: var(--gold); }
+
+/* Dropdown */
+.nav-dropdown { position: relative; }
+.nav-dropdown > button .chevron {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  margin-left: 7px;
+  vertical-align: middle;
+  transition: transform 0.25s ease;
+  opacity: 0.6;
+}
+.nav-dropdown:hover > button .chevron {
+  transform: rotate(-135deg) translateY(-2px);
+}
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 1.2rem);
+  left: 50%;
+  background: var(--cream);
+  border: 1px solid var(--cream-dark);
+  box-shadow: var(--shadow-strong);
+  min-width: 230px;
+  padding: 1rem 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(-10px);
+  transition: all 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown-menu a {
+  display: block;
+  padding: 0.7rem 1.8rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--plum-mid) !important;
+  transition: var(--fast);
+}
+.nav-dropdown-menu a:hover {
+  color: var(--gold) !important;
+  padding-left: 2.3rem;
+  background: var(--gold-muted);
+}
+.nav-cta {
+  padding: 0.65rem 1.8rem !important;
+  border: 1px solid rgba(255,255,255,0.45) !important;
+  background: transparent !important;
+  color: white !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.14em !important;
+  font-size: 0.75rem !important;
+  transition: var(--fast) !important;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover {
+  background: rgba(255,255,255,0.12) !important;
+  border-color: white !important;
+}
+#nav.scrolled .nav-cta {
+  border-color: var(--plum) !important;
+  color: var(--plum) !important;
+}
+#nav.scrolled .nav-cta:hover {
+  background: var(--plum) !important;
+  color: var(--cream) !important;
+}
+
+/* Mobile nav */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: none;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  z-index: 1100;
+}
+.burger span {
+  display: block;
+  width: 26px; height: 1px;
+  background: white;
+  transition: var(--fast);
+}
+#nav.scrolled .burger span { background: var(--plum); }
+.burger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--plum);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.mobile-menu.open { transform: translateX(0); }
+.mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 200;
+  color: var(--cream);
+  padding: 0.55rem 0;
+  opacity: 0.75;
+  transition: var(--fast);
+  letter-spacing: 0.02em;
+}
+.mobile-menu a:hover { opacity: 1; color: var(--gold); }
+.mobile-menu .mobile-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 1.4rem 0 0.2rem;
+  opacity: 0.55;
+}
+.mobile-menu .mobile-contact {
+  margin-top: 2.5rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+  padding: 0 2rem;
+}
+
+/* ============ BUTTONS ============ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.95rem 2.8rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: none;
+  border: none;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary {
+  background: var(--plum);
+  color: var(--cream);
+}
+.btn-primary:hover { background: var(--plum-light); transform: translateY(-2px); box-shadow: var(--shadow); }
+.btn-outline {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(255,255,255,0.4);
+}
+.btn-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.7); }
+.btn-outline-dark {
+  background: transparent;
+  color: var(--plum);
+  border: 1px solid rgba(28,1,32,0.4);
+}
+.btn-outline-dark:hover { background: var(--plum); color: var(--cream); transform: translateY(-2px); }
+.btn-gold {
+  background: var(--gold);
+  color: var(--plum);
+  position: relative;
+  overflow: hidden;
+}
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.22) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(190,154,82,0.28); }
+.btn-gold:hover::before { transform: translateX(100%); }
+
+/* ============ HERO ============ */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: -5%;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.08);
+  transition: transform 9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: saturate(0.9);
+}
+.hero-bg.loaded { transform: scale(1); }
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(28,1,32,0.2) 0%, transparent 35%),
+    linear-gradient(160deg, rgba(28,1,32,0.78) 0%, rgba(28,1,32,0.42) 55%, rgba(28,1,32,0.65) 100%);
+}
+/* Vignette */
+.hero-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(28,1,32,0.45) 100%);
+}
+/* Thin gold horizontal rule in hero */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  max-width: 900px;
+}
+.hero-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.8rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.9s ease 0.3s forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+.hero-title {
+  color: white;
+  font-weight: 200;
+  margin-bottom: 1.8rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease 0.55s forwards;
+}
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,0.78);
+  max-width: 660px;
+  margin: 0 auto 3rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease 0.8s forwards;
+  line-height: 1.65;
+}
+.hero-actions {
+  display: flex;
+  gap: 1.4rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease 1.05s forwards;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+.hero-scroll-line {
+  width: 1px; height: 55px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.35));
+  animation: scrollPulse 2.5s ease infinite;
+}
+@keyframes scrollPulse {
+  0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+}
+
+/* ============ INTERIOR PAGE HERO ============ */
+.page-hero {
+  padding: 14rem 0 8rem;
+  background: var(--plum);
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+/* Radial gold glow */
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 70%;
+  height: 200%;
+  background: radial-gradient(ellipse, rgba(190,154,82,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+/* Subtle grain on dark sections */
+.page-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.35;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+.page-hero-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.page-hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px; height: 1px;
+  background: var(--gold);
+  opacity: 0.6;
+}
+.page-hero h1 {
+  color: var(--cream);
+  font-weight: 200;
+  margin-bottom: 1.5rem;
+}
+.page-hero p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  color: rgba(253,252,243,0.6);
+  max-width: 580px;
+  margin: 0;
+  line-height: 1.65;
+}
+
+/* ============ SECTION HEADERS ============ */
+.section-header {
+  text-align: left;
+  max-width: 700px;
+  margin: 0 0 5rem;
+}
+.section-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 28px; height: 1px;
+  background: var(--gold);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+.section-header h2 { margin-bottom: 1rem; }
+.section-header p { color: #6a5868; font-size: 1.05rem; line-height: 1.8; }
+.divider {
+  width: 44px; height: 1px;
+  background: var(--gold);
+  margin: 1.8rem 0 0;
+  opacity: 0.6;
+}
+
+/* ============ MISSION BAND ============ */
+.mission-band {
+  background: var(--cream-warm);
+  border-top: 1px solid var(--cream-dark);
+  border-bottom: 1px solid var(--cream-dark);
+  padding: 6rem 0;
+  text-align: center;
+  position: relative;
+}
+.mission-band blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 2.6vw, 2.15rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--plum-mid);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.65;
+  position: relative;
+  padding: 0 2rem;
+}
+.mission-band blockquote::before,
+.mission-band blockquote::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+  margin: 0 auto 2rem;
+}
+.mission-band blockquote::after { margin: 2rem auto 0; }
+
+/* ============ DIRECTOR SECTION ============ */
+.director-section { background: var(--cream); }
+.director-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 7rem;
+  align-items: center;
+}
+.director-image { position: relative; }
+.director-image img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+/* Offset gold frame */
+.director-image::before {
+  content: '';
+  position: absolute;
+  top: -1.5rem; left: -1.5rem;
+  right: 1.5rem; bottom: 1.5rem;
+  border: 1px solid rgba(190,154,82,0.35);
+  z-index: 0;
+  transition: var(--transition);
+}
+.director-image:hover::before {
+  top: -2rem; left: -2rem;
+  right: 2rem; bottom: 2rem;
+  border-color: rgba(190,154,82,0.6);
+}
+.director-text .title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-size: 1.15rem;
+  margin-bottom: 2.2rem;
+  display: block;
+  letter-spacing: 0.02em;
+}
+.director-text h2 { margin-bottom: 0.5rem; }
+.director-text p { margin-bottom: 1.3rem; }
+
+/* ============ SERVICES GRID ============ */
+.services-section { background: var(--cream-warm); }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--cream-dark);
+}
+.service-card {
+  background: var(--cream);
+  overflow: hidden;
+  cursor: none;
+  transition: var(--transition);
+  position: relative;
+  border-right: 1px solid var(--cream-dark);
+  border-bottom: 1px solid var(--cream-dark);
+}
+.service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-strong); z-index: 2; background: white; }
+.service-card-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.9s ease;
+  filter: saturate(0.8);
+}
+.service-card:hover .service-card-img { transform: scale(1.05); filter: saturate(1); }
+.service-card-body { padding: 2rem; }
+.service-card-body h4 { margin-bottom: 0.7rem; }
+.service-card-body p { font-size: 0.9rem; color: #6a5868; line-height: 1.75; }
+.service-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.3rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  transition: gap var(--fast);
+}
+.service-card-link::after { content: '→'; }
+.service-card:hover .service-card-link { gap: 0.9rem; }
+
+/* ============ APPROACH CARDS ============ */
+.approach-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: var(--cream-dark);
+}
+.approach-card {
+  padding: 3rem 3rem 3rem;
+  background: var(--cream);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.approach-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+.approach-card:hover { background: white; box-shadow: var(--shadow); }
+.approach-card:hover::after { transform: scaleX(1); }
+.approach-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem;
+  font-weight: 200;
+  color: var(--cream-dark);
+  line-height: 1;
+  margin-bottom: 1.2rem;
+  transition: color 0.4s ease;
+}
+.approach-card:hover .approach-number { color: var(--gold-light); }
+.approach-card h4 { margin-bottom: 0.9rem; }
+.approach-card p { font-size: 0.92rem; color: #6a5868; }
+
+/* ============ TEAM GRID ============ */
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+}
+.team-card {
+  flex: 0 0 calc(33.333% - 2rem);
+  min-width: 220px;
+  max-width: 290px;
+  text-align: center;
+}
+.team-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  margin-bottom: 1.8rem;
+  position: relative;
+}
+/* Subtle inner frame */
+.team-card-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(190,154,82,0.18);
+  z-index: 2;
+  pointer-events: none;
+  transition: var(--transition);
+}
+.team-card:hover .team-card-img-wrap::after {
+  inset: 6px;
+  border-color: rgba(190,154,82,0.4);
+}
+.team-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.9s ease;
+  filter: saturate(0.85) sepia(0.06);
+}
+.team-card:hover .team-card-img-wrap img { transform: scale(1.05); filter: saturate(1) sepia(0); }
+.team-card h4 { font-size: 1.3rem; margin-bottom: 0.3rem; font-weight: 300; }
+.team-card .role {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.team-card p { font-size: 0.88rem; color: #6a5868; max-width: 280px; margin: 0 auto; line-height: 1.75; }
+
+/* ============ CONTENT SPLIT ============ */
+.content-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+.content-split.reverse { direction: rtl; }
+.content-split.reverse > * { direction: ltr; }
+.content-split-image {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+}
+.content-split-text p { margin-bottom: 1.3rem; }
+
+/* ============ DARK BAND ============ */
+.dark-band {
+  background: var(--plum);
+  color: var(--cream);
+  padding: 8rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+/* Grain on dark sections */
+.dark-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.1'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+.dark-band h2 { color: var(--cream); font-weight: 200; margin-bottom: 1.2rem; }
+.dark-band p {
+  color: rgba(253,252,243,0.6);
+  max-width: 560px;
+  margin: 0 auto 3rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.65;
+}
+
+/* ============ TESTIMONIALS ============ */
+.testimonials-section { background: var(--cream-warm); }
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2px;
+  background: var(--cream-dark);
+}
+.testimonial-card {
+  background: var(--cream);
+  padding: 3rem;
+  position: relative;
+  transition: background var(--fast);
+}
+.testimonial-card:hover { background: white; }
+/* Large decorative quote mark */
+.testimonial-card::before {
+  content: '\201C';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 7rem;
+  line-height: 0.8;
+  color: var(--gold);
+  opacity: 0.12;
+  position: absolute;
+  top: 2rem; left: 2.2rem;
+  pointer-events: none;
+}
+/* Gold accent line at top */
+.testimonial-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.testimonial-card:hover::after { opacity: 0.6; }
+.testimonial-card p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.75;
+  color: var(--plum-mid);
+  margin-bottom: 1.8rem;
+  position: relative;
+  z-index: 1;
+}
+.testimonial-author {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.testimonial-author::before {
+  content: '';
+  display: inline-block;
+  width: 20px; height: 1px;
+  background: var(--gold);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+/* ============ FAQ ============ */
+.faq-list { max-width: 760px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--cream-dark); overflow: hidden; }
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 2rem 0;
+  text-align: left;
+  cursor: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--plum);
+  transition: var(--fast);
+}
+.faq-question:hover { color: var(--gold); }
+.faq-icon {
+  flex-shrink: 0;
+  width: 26px; height: 26px;
+  border: 1px solid rgba(190,154,82,0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: var(--transition);
+  color: var(--gold);
+}
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  background: var(--gold);
+  border-color: var(--gold);
+  color: white;
+}
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.45s ease; }
+.faq-answer-inner { padding: 0 0 2rem; color: #6a5868; font-size: 0.97rem; line-height: 1.85; }
+
+/* ============ CONTACT ============ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 6rem;
+  align-items: start;
+}
+.contact-info h3 { margin-bottom: 0.5rem; }
+.contact-info .divider { margin: 1.8rem 0; margin-left: 0; }
+.contact-block { margin-bottom: 2.2rem; }
+.contact-block .label {
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.contact-block p { font-size: 0.97rem; color: var(--plum-mid); }
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 1.1rem 1.3rem;
+  background: var(--cream-warm);
+  border: 1px solid var(--cream-dark);
+  border-radius: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  transition: var(--fast);
+  outline: none;
+  cursor: none;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--gold);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(190,154,82,0.07);
+}
+.contact-form textarea { min-height: 170px; resize: vertical; }
+.contact-form label {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.form-group { margin-bottom: 1.3rem; }
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--plum);
+  color: rgba(253,252,243,0.6);
+  padding: 6rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+}
+footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.1'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.25;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+/* Thin gold top border */
+footer::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 3rem; right: 3rem;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(190,154,82,0.4), transparent);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 5rem;
+  margin-bottom: 4rem;
+  position: relative;
+}
+.footer-brand img {
+  height: 46px;
+  opacity: 0.7;
+  margin-bottom: 1.4rem;
+  display: block;
+}
+.footer-brand p { font-size: 0.88rem; line-height: 1.8; color: rgba(253,252,243,0.42); max-width: 300px; }
+.footer-col h5 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.4rem;
+  opacity: 0.8;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 0.7rem; }
+.footer-col a { font-size: 0.88rem; color: rgba(253,252,243,0.45); transition: var(--fast); }
+.footer-col a:hover { color: var(--gold); }
+.footer-col p { font-size: 0.88rem; color: rgba(253,252,243,0.45); line-height: 1.85; }
+.footer-bottom {
+  border-top: 1px solid rgba(253,252,243,0.06);
+  padding-top: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  position: relative;
+}
+.footer-bottom p { font-size: 0.75rem; color: rgba(253,252,243,0.25); }
+
+/* ============ MYTHS SECTION ============ */
+.myths-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--cream-dark); }
+.myth-card {
+  padding: 2.5rem;
+  background: var(--cream-warm);
+  transition: var(--transition);
+}
+.myth-card:hover { background: white; box-shadow: var(--shadow); transform: translateY(-2px); }
+.myth-label {
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: #b05a5a; margin-bottom: 0.6rem;
+}
+.reality-label {
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.6rem;
+}
+.myth-card h4 { font-size: 1.1rem; margin-bottom: 0.9rem; font-style: italic; }
+.myth-card p { font-size: 0.9rem; color: #6a5868; }
+
+/* ============ SCROLL ANIMATIONS ============ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-in-left {
+  opacity: 0; transform: translateX(-32px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.fade-in-left.visible { opacity: 1; transform: translateX(0); }
+.fade-in-right {
+  opacity: 0; transform: translateX(32px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.fade-in-right.visible { opacity: 1; transform: translateX(0); }
+.delay-1 { transition-delay: 0.12s; }
+.delay-2 { transition-delay: 0.24s; }
+.delay-3 { transition-delay: 0.36s; }
+.delay-4 { transition-delay: 0.48s; }
+.delay-5 { transition-delay: 0.6s; }
+
+/* ============ PAGE TRANSITIONS ============ */
+#app { transition: opacity 0.35s ease; }
+#app.leaving { opacity: 0; }
+
+/* ============ KEYFRAMES ============ */
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ LIST STYLES ============ */
+.styled-list { list-style: none; margin: 1.3rem 0; }
+.styled-list li {
+  padding: 0.6rem 0 0.6rem 1.6rem;
+  position: relative;
+  font-size: 0.95rem;
+  color: #6a5868;
+  border-bottom: 1px solid var(--cream-dark);
+}
+.styled-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 300;
+}
+
+/* ============ RICH TEXT ============ */
+.rich-text { max-width: 760px; margin: 0 auto; }
+.rich-text h3 { margin-bottom: 1rem; margin-top: 3rem; }
+.rich-text h3:first-child { margin-top: 0; }
+.rich-text p { margin-bottom: 1.3rem; }
+
+/* ============ WORKSHOPS ============ */
+.workshop-topics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin: 2.5rem 0;
+  background: var(--cream-dark);
+}
+.workshop-topic {
+  padding: 1.8rem 1.8rem 1.8rem 3.5rem;
+  background: var(--cream-warm);
+  font-size: 0.92rem;
+  position: relative;
+  transition: var(--fast);
+}
+.workshop-topic:hover { background: white; }
+.workshop-topic::before {
+  content: attr(data-num);
+  position: absolute;
+  left: 1.2rem; top: 1.6rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+  font-weight: 200;
+  opacity: 0.7;
+}
+
+/* ============ STATS ============ */
+.stats-row {
+  display: flex;
+  gap: 5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 0;
+}
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.8rem;
+  font-weight: 200;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.stat-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(253,252,243,0.45);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .director-grid, .content-split, .contact-grid {
+    grid-template-columns: 1fr; gap: 3.5rem;
+  }
+  .content-split.reverse { direction: ltr; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .myths-grid { grid-template-columns: 1fr; }
+  .workshop-topics { grid-template-columns: 1fr; }
+  .approach-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .nav-links, .nav-cta-wrap { display: none; }
+  .burger { display: flex; }
+  .services-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .team-grid { gap: 2rem; }
+  .team-card { flex: 0 0 calc(50% - 1rem); max-width: none; }
+  .stats-row { gap: 2.5rem; }
+  .testimonial-grid { grid-template-columns: 1fr; }
+  .page-hero { padding: 10rem 0 5rem; }
+  .section { padding: 6rem 0; }
+}
+@media (max-width: 400px) {
+  .team-card { flex: 0 0 100%; max-width: 100%; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- Grain texture overlay -->
+<div aria-hidden="true" style="position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:1;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="display:block;width:100%;height:100%;opacity:0.038;mix-blend-mode:multiply;">
+    <filter id="grain-filter" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.78" numOctaves="4" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise"/>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#grain-filter)"/>
+  </svg>
+</div>
+<!-- Custom cursor -->
+<div id="lux-cursor"></div>
+<div id="lux-cursor-ring"></div>
+
+<!-- NAVIGATION -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#" onclick="navigate('home');return false;">
+      <img src="https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1615003856005-ORL3O2H1BH0QSFAQYM31/Screen+Shot+2021-03-05+at+8.10.33+PM.png?format=1500w" alt="Perspectives Group">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#" onclick="navigate('home');return false;">About Us</a></li>
+      <li><a href="#" onclick="navigate('who-we-are');return false;">Who We Are</a></li>
+      <li class="nav-dropdown">
+        <button>Educational Therapy <span class="chevron"></span></button>
+        <div class="nav-dropdown-menu">
+          <a href="#" onclick="navigate('what-is-et');return false;">What is ET?</a>
+          <a href="#" onclick="navigate('common-myths');return false;">Common Myths about ADHD</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <button>Services <span class="chevron"></span></button>
+        <div class="nav-dropdown-menu">
+          <a href="#" onclick="navigate('educational-therapy');return false;">Educational Therapy</a>
+          <a href="#" onclick="navigate('adult-et');return false;">Adult ET</a>
+          <a href="#" onclick="navigate('cognitive-rehabilitation');return false;">Cognitive Rehabilitation</a>
+          <a href="#" onclick="navigate('workshops');return false;">Workshops</a>
+          <a href="#" onclick="navigate('skills-groups');return false;">Skills Groups</a>
+          <a href="#" onclick="navigate('treatment-consultation');return false;">Treatment Consultation</a>
+        </div>
+      </li>
+      <li class="nav-dropdown">
+        <button>Words from Clients <span class="chevron"></span></button>
+        <div class="nav-dropdown-menu">
+          <a href="#" onclick="navigate('testimonials');return false;">Testimonials</a>
+          <a href="#" onclick="navigate('faqs');return false;">FAQs</a>
+        </div>
+      </li>
+    </ul>
+    <div class="nav-cta-wrap">
+      <a class="btn nav-cta" href="#" onclick="navigate('contact');return false;">Contact Us</a>
+    </div>
+    <button class="burger" id="burger" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="navigate('home');toggleMobile();return false;">About Us</a>
+  <a href="#" onclick="navigate('who-we-are');toggleMobile();return false;">Who We Are</a>
+  <span class="mobile-sub">Educational Therapy</span>
+  <a href="#" onclick="navigate('what-is-et');toggleMobile();return false;">What is ET?</a>
+  <a href="#" onclick="navigate('common-myths');toggleMobile();return false;">Common Myths about ADHD</a>
+  <span class="mobile-sub">Services</span>
+  <a href="#" onclick="navigate('educational-therapy');toggleMobile();return false;">Educational Therapy</a>
+  <a href="#" onclick="navigate('adult-et');toggleMobile();return false;">Adult ET</a>
+  <a href="#" onclick="navigate('cognitive-rehabilitation');toggleMobile();return false;">Cognitive Rehabilitation</a>
+  <a href="#" onclick="navigate('workshops');toggleMobile();return false;">Workshops</a>
+  <a href="#" onclick="navigate('skills-groups');toggleMobile();return false;">Skills Groups</a>
+  <a href="#" onclick="navigate('treatment-consultation');toggleMobile();return false;">Treatment Consultation</a>
+  <span class="mobile-sub">Words from Clients</span>
+  <a href="#" onclick="navigate('testimonials');toggleMobile();return false;">Testimonials</a>
+  <a href="#" onclick="navigate('faqs');toggleMobile();return false;">FAQs</a>
+  <a href="#" onclick="navigate('contact');toggleMobile();return false;" style="margin-top:1.5rem; color:var(--gold);">Contact Us</a>
+  <div class="mobile-contact">(424) 832-7978 &middot; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d2bbbcb4bd92a2b7a0a1a2b7b1a6bba4b7a1b5a0bda7a2fcb1bd">[email&#160;protected]</a></div>
+</div>
+
+<!-- APP CONTAINER -->
+<div id="app"></div>
+
+<!-- FOOTER TEMPLATE -->
+<footer id="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1615003856005-ORL3O2H1BH0QSFAQYM31/Screen+Shot+2021-03-05+at+8.10.33+PM.png?format=1500w" alt="Perspectives Group">
+        <p>A boutique therapy practice providing integrative and personalized educational therapy and consultative work for children and adults in Los Angeles.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#" onclick="navigate('educational-therapy');return false;">Educational Therapy</a></li>
+          <li><a href="#" onclick="navigate('adult-et');return false;">Adult ET</a></li>
+          <li><a href="#" onclick="navigate('cognitive-rehabilitation');return false;">Cognitive Rehabilitation</a></li>
+          <li><a href="#" onclick="navigate('workshops');return false;">Workshops</a></li>
+          <li><a href="#" onclick="navigate('skills-groups');return false;">Skills Groups</a></li>
+          <li><a href="#" onclick="navigate('treatment-consultation');return false;">Treatment Consultation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <p>12301 Wilshire Blvd, Suite 514<br>Los Angeles, CA 90025</p>
+        <br>
+        <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3b52555d547b4b5e49484b5e584f524d5e485c49544e4b155854">[email&#160;protected]</a><br>(424) 832-7978</p>
+        <br>
+        <p>Mon&ndash;Saturday<br>Hours vary by appointment</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Perspectives Group. All rights reserved.</p>
+      <p>Los Angeles, CA</p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ============ PAGE DEFINITIONS ============
+
+const LOGO = 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1615003856005-ORL3O2H1BH0QSFAQYM31/Screen+Shot+2021-03-05+at+8.10.33+PM.png?format=1500w';
+const IMG = {
+  hero: 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1614623658017-5ECJ521TJIRPNNZ7BBCG/GettyImages-947698310-1729da81e58f40058a9e45ba82532d57-2f992696318c42cbbd595ef3ec1043fd.jpg',
+  teamBg: 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1614623741604-4EGP09NNDPU8X1NPQJN9/IMG_4769%252B2.jpg',
+  drClaxton: 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1617671690322-P6T6XD7DUCMR5BKO1BVA/2021-203final.jpg',
+  team1: 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1617671507583-AR0AD7COYN13701BE7HI/2021-203final.jpg',
+  team2: 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1617671540285-PRLW4NILWK4HAFHCB44A/2021-23final.jpg',
+  team3: 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1619057505941-3N45XMQ0MQM4ATQNOJJN/Screen+Shot+2021-04-07+at+12.01.33+PM.png',
+  team4: 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1617671600017-QMKXTZTFN88C5VXGSXFB/2021-67final.jpg',
+  team5: 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1617671626954-LWB75WTQ3RPABGC4MOCD/2021-116final.jpg',
+  et: 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1614622002174-JJLJ3NSBEWCG7K7J639Z/IMG_4792.jpg',
+  adultEt: 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1614621973500-U0JXCYY5B42VK0Z6D6HT/IMG_4779.jpg',
+  cogRehab: 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1614622068788-IM7NHV5PY54IYFR6U7GX/IMG_6263.jpg',
+  workshops: 'https://images.squarespace-cdn.com/content/v1/5ec321c2af33de48734cc929/1589847757806-CWDKX0SZ3TKKIYZ1P1QO/AroHa_02.jpg',
+  skillsGroups: 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1614793606286-85XQ1WVCNJADGP4B6VNH/IMG_4774.jpg',
+  treatment: 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1614793690953-RQ9C3WAKO7KJCBHS4L5O/IMG_6251.jpg',
+  whatIsEt: 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1619141499010-EGHF6FXXTATWG5Y00AXT/8y9xIpMA.jpg',
+  adultEtPage: 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1619141774084-SGJV2OU63QAKKFY04NDD/bOM_LUMQ.jpg',
+  cogRehabPage: 'https://images.squarespace-cdn.com/content/v1/5ec321c2af33de48734cc929/1589847933647-91MTYNIETO4AZ37H6YR8/20140301_Trade-151_0124-copy.jpg',
+  etTherapy: 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1614795444428-MGZLPYRHDMEY8YGO9Y36/IMG_4772.jpeg',
+  treatmentPage: 'https://images.squarespace-cdn.com/content/v1/6001c7d846a92d0a53012a0a/1619142162250-EB62RAK0F9MUB5LO4MZV/OqCGaRyA.jpg',
+};
+
+// ============ PAGES ============
+
+const pages = {
+
+home: () => `
+<div class="hero">
+  <div class="hero-bg" style="background-image:url('${IMG.hero}')" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Boutique Educational Therapy &mdash; Los Angeles</div>
+    <h1 class="hero-title">Welcome to<br><em>Perspectives</em></h1>
+    <p class="hero-subtitle">Integrative and personalized educational therapy and consultative work for children and adults.</p>
+    <div class="hero-actions">
+      <a class="btn btn-gold" href="#" onclick="navigate('contact');return false;">Get in Touch</a>
+      <a class="btn btn-outline" href="#" onclick="navigate('who-we-are');return false;">Meet the Team</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</div>
+
+<div class="mission-band">
+  <div class="container">
+    <blockquote class="fade-in">"Perspectives Group aims to support our clients&rsquo; neurocognitive and educational needs through individualized and systemic support &mdash; addressing an expansive range of concerns related to information processing and productivity."</blockquote>
+    <div class="divider fade-in delay-2"></div>
+    <p style="text-align:center;margin-top:1.2rem;font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold)" class="fade-in delay-3">Our Mission</p>
+  </div>
+</div>
+
+<section class="section director-section">
+  <div class="container">
+    <div class="director-grid">
+      <div class="director-image fade-in-left">
+        <img src="${IMG.drClaxton}" alt="Dr. Karolina Claxton" loading="lazy">
+      </div>
+      <div class="director-text fade-in-right">
+        <p class="section-label">A Word from Our Director</p>
+        <h2>Dr. Karolina<br><em>Claxton</em></h2>
+        <span class="title">EdD, Founder &amp; Director</span>
+        <p>At its core, our work improves the information processing system, the way the brain attends to inputs, and the ways in which we engage with the brain&rsquo;s primitive instincts as we try to retain and recall information.</p>
+        <p>We specialize in neurocognitive profiles that do not fit neatly into diagnostic categories. Many people experience features of defined disorders yet possess strengths that may be atypical of those profiles. Often their environmental demands are suited to their strengths but leave little space for their weaknesses.</p>
+        <p>We work with children as young as six years old, and we are one of the only educational groups that comprehensively serves adult needs &mdash; from college students to midlife adults preparing for professional exams. We design the goals of our work with every client&rsquo;s next steps in mind.</p>
+        <p>In addition to managing the demands of tests, research papers, and life balance &ldquo;in the now,&rdquo; people of all ages need to develop an understanding of self and the skills of self-regulation necessary to compete in the 21st-century workforce.</p>
+        <a class="btn btn-outline-dark" href="#" onclick="navigate('who-we-are');return false;" style="margin-top:1.5rem;">Meet the Full Team</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section services-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">What We Do</p>
+      <h2>Our <em>Services</em></h2>
+      <p>From foundational educational therapy to complex cognitive rehabilitation, we offer a continuum of care designed around each client&rsquo;s unique profile.</p>
+      <div class="divider"></div>
+    </div>
+  </div>
+  <div class="container-wide">
+    <div class="services-grid fade-in delay-1">
+      <div class="service-card" onclick="navigate('educational-therapy')">
+        <img class="service-card-img" src="${IMG.et}" alt="Educational Therapy">
+        <div class="service-card-body">
+          <h4>Educational Therapy</h4>
+          <p>We help clients change their fundamental approach to school &mdash; introducing resources, tools, and systems for managing time, ideas, and materials.</p>
+          <span class="service-card-link">Learn More</span>
+        </div>
+      </div>
+      <div class="service-card" onclick="navigate('adult-et')">
+        <img class="service-card-img" src="${IMG.adultEt}" alt="Adult ET">
+        <div class="service-card-body">
+          <h4>Adult Educational Therapy</h4>
+          <p>Specialized support for adults studying for professional exams, or navigating challenges in executive functioning, work productivity, and home life.</p>
+          <span class="service-card-link">Learn More</span>
+        </div>
+      </div>
+      <div class="service-card" onclick="navigate('cognitive-rehabilitation')">
+        <img class="service-card-img" src="${IMG.cogRehab}" alt="Cognitive Rehabilitation">
+        <div class="service-card-body">
+          <h4>Cognitive Rehabilitation</h4>
+          <p>Rebuild cognitive and executive functioning skills following a brain injury, a gap in stimulation, or simply sharpen existing capabilities.</p>
+          <span class="service-card-link">Learn More</span>
+        </div>
+      </div>
+      <div class="service-card" onclick="navigate('workshops')">
+        <img class="service-card-img" src="${IMG.workshops}" alt="Workshops">
+        <div class="service-card-body">
+          <h4>Workshops</h4>
+          <p>Interactive, problem-based workshops that break complex topics into manageable action steps for educators, parents, and organizations.</p>
+          <span class="service-card-link">Learn More</span>
+        </div>
+      </div>
+      <div class="service-card" onclick="navigate('skills-groups')">
+        <img class="service-card-img" src="${IMG.skillsGroups}" alt="Skills Groups">
+        <div class="service-card-body">
+          <h4>Skills Groups</h4>
+          <p>Targeted small-group work toward specific common goals in a collaborative, supportive setting that builds community alongside capability.</p>
+          <span class="service-card-link">Learn More</span>
+        </div>
+      </div>
+      <div class="service-card" onclick="navigate('treatment-consultation')">
+        <img class="service-card-img" src="${IMG.treatment}" alt="Treatment Consultation">
+        <div class="service-card-body">
+          <h4>Treatment Consultation</h4>
+          <p>For complex cases, we act as case carriers, consultants, and coordinators of care &mdash; training team members in a client&rsquo;s profile and needs.</p>
+          <span class="service-card-link">Learn More</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dark-band fade-in">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat"><div class="stat-num">6+</div><div class="stat-label">Years of Practice</div></div>
+      <div class="stat"><div class="stat-num">6</div><div class="stat-label">Service Areas</div></div>
+      <div class="stat"><div class="stat-num">6+</div><div class="stat-label">Expert Clinicians</div></div>
+      <div class="stat"><div class="stat-num">LA</div><div class="stat-label">Wilshire Corridor</div></div>
+    </div>
+    <h2 style="color:var(--cream);margin-bottom:1rem;">Ready to Begin?</h2>
+    <p>We&rsquo;d love to hear from you. Reach out to learn how Perspectives Group can help you or your child thrive.</p>
+    <a class="btn btn-gold" href="#" onclick="navigate('contact');return false;">Contact Us Today</a>
+  </div>
+</div>
+`,
+
+'who-we-are': () => `
+<div class="page-hero">
+  <div class="container">
+    <p class="page-hero-eyebrow">Our Practice</p>
+    <h1>Who We <em>Are</em></h1>
+    <p>A tight-knit group of professionals from diverse educational backgrounds, united by a passion for helping our clients.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">About Us</p>
+      <h2>Not Your Average <em>Educational Therapy Group</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="fade-in" style="max-width:760px;margin:0 0 3rem;text-align:left;line-height:1.85;color:#4a3848;">
+      <p>We are a tight-knit group of professionals from diverse educational backgrounds who share a passion for helping our clients. We take different approaches to educational therapy, which has provided us with an interdisciplinarily-informed perspective on how to most effectively help individuals. We consult each other and have a collective repertoire of varying areas of expertise which diversifies our practice.</p>
+      <p style="margin-top:1.2rem;">We are not your average educational therapy group &mdash; neither reading specialists nor little-kid remediators nor homework helpers. We are more collaborative, have deeper and broader expertise, and are more resourceful. We really dig for an honest sense of what&rsquo;s actually happening and why one is not following through on goals. Our team approach translates outside our office, as we provide extensive wraparound care with parents, educators, and other clinicians.</p>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-card fade-in delay-1">
+        <div class="approach-number">01</div>
+        <h4>Individualized Assessment</h4>
+        <p>We begin by understanding each client&rsquo;s unique neurocognitive profile &mdash; their strengths, challenges, and environmental demands &mdash; before any intervention begins.</p>
+      </div>
+      <div class="approach-card fade-in delay-2">
+        <div class="approach-number">02</div>
+        <h4>Collaborative Care</h4>
+        <p>We work alongside psychiatrists, psychologists, educators, and parents to provide cohesive, wrap-around support for every client.</p>
+      </div>
+      <div class="approach-card fade-in delay-3">
+        <div class="approach-number">03</div>
+        <h4>Strategy-Centered Therapy</h4>
+        <p>Our sessions train clients in the cognitive and metacognitive strategies needed to manage information, regulate behavior, and sustain motivation.</p>
+      </div>
+      <div class="approach-card fade-in delay-4">
+        <div class="approach-number">04</div>
+        <h4>Lifelong Skills</h4>
+        <p>We prepare clients not just for their immediate academic demands but for the self-regulation and decision-making skills required by the 21st-century workforce.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--cream-warm)">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">Meet the Team</p>
+      <h2>The People Behind <em>Perspectives</em></h2>
+      <p>Our clinicians bring backgrounds in psychology, cognitive science, and education, united by a passion for unlocking each client&rsquo;s potential.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="team-grid">
+      <div class="team-card fade-in delay-1">
+        <div class="team-card-img-wrap">
+          <img src="${IMG.team1}" alt="Karolina Claxton, Ed.D." loading="lazy">
+        </div>
+        <h4>Karolina Claxton, Ed.D.</h4>
+        <div class="role">Founder &amp; Director</div>
+        <p>Karolina has worked for more than 20 years to train people and organizations in strategies to improve learning, memory and productivity. Her expertise lies in the anatomy of learning itself. She earned her BA at NYU, her Master of Public Policy at UCLA, and her doctorate in educational psychology at USC. She is also the principal of The Foundry, a consulting group for small and medium-sized businesses. She is a twin mom and flies trapeze for fun.</p>
+      </div>
+      <div class="team-card fade-in delay-2">
+        <div class="team-card-img-wrap">
+          <img src="${IMG.team2}" alt="Jonathan Schaefer, Ph.D." loading="lazy">
+        </div>
+        <h4>Jonathan Schaefer, Ph.D.</h4>
+        <div class="role">Clinician</div>
+        <p>Jonathan is a Biology Ph.D. and published author who has remained dedicated to understanding the anatomy of learning processes. He has worked as a classroom teacher in independent schools and in private practice in the Bay Area and Los Angeles. He builds effective learning strategies by applying evidence-based cognitive neuropsychology in developmentally appropriate ways, and is Wilson-trained and pursuing formal AET certification.</p>
+      </div>
+      <div class="team-card fade-in delay-3">
+        <div class="team-card-img-wrap">
+          <img src="${IMG.team3}" alt="Jennifer Bennett, Psy.D." loading="lazy">
+        </div>
+        <h4>Jennifer Bennett, Psy.D.</h4>
+        <div class="role">Clinician</div>
+        <p>Jennifer was a child psychologist before she was an educational therapist. Her clinical experience included serving as a school-based therapist for children on the autism spectrum, a psychoeducational group leader for children of divorce, and a lead teacher for a gap-year program for teenagers. She also wrote and published <em>Miracle Baby: How Babies are Made the IVF Way</em>. She is warm, patient, and attuned to the social-emotional aspects of learning.</p>
+      </div>
+      <div class="team-card fade-in delay-4">
+        <div class="team-card-img-wrap">
+          <img src="${IMG.team4}" alt="Katie Cadigan, MA" loading="lazy">
+        </div>
+        <h4>Katie Cadigan, MA</h4>
+        <div class="role">Clinician</div>
+        <p>Katie has a BA in Psychology from GWU, an MA in Special Education from LMU, and a post-master certificate in educational therapy specializing in intervention plans. She is an associate with the Association of Educational Therapists, has worked for the International Dyslexia Association, and has been formally trained in Orton-Gillingham&rsquo;s Wilson programs. She is dynamic, energetic, and deeply insightful.</p>
+      </div>
+      <div class="team-card fade-in delay-5">
+        <div class="team-card-img-wrap">
+          <img src="${IMG.team5}" alt="Shayna DelVecchio" loading="lazy">
+        </div>
+        <h4>Shayna DelVecchio</h4>
+        <div class="role">Office Manager</div>
+        <p>Shayna grew up in Long Island, New York, and earned her BA from the Gallatin School of Individualized Study at NYU, where she created her own concentration in &ldquo;Aesthetics, Psychology, and the Human Consciousness.&rdquo; She earned a minor in Child and Adolescent Mental Health Studies and was accepted into the Masters program at Columbia University&rsquo;s School of Social Work. She hopes to one day pursue her PhD in clinical psychology.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dark-band">
+  <div class="container">
+    <h2>Let&rsquo;s Connect</h2>
+    <p>We&rsquo;d be delighted to discuss how our team can best support you or your child&rsquo;s unique needs.</p>
+    <a class="btn btn-gold" href="#" onclick="navigate('contact');return false;">Schedule a Consultation</a>
+  </div>
+</div>
+`,
+
+'what-is-et': () => `
+<div class="page-hero">
+  <div class="container">
+    <p class="page-hero-eyebrow">Educational Therapy</p>
+    <h1>What Is <em>ET?</em></h1>
+    <p>Educational therapy is a holistic, integrative discipline that addresses the root causes of learning difficulties &mdash; not just their symptoms.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="content-split">
+      <img class="content-split-image fade-in-left" src="${IMG.whatIsEt}" alt="What is Educational Therapy" loading="lazy">
+      <div class="content-split-text fade-in-right">
+        <p class="section-label">Understanding ET</p>
+        <h2>Beyond Tutoring.<br><em>Transformation.</em></h2>
+        <p>Educational therapy (ET) is a specialized field that combines principles from education, psychology, and cognitive science to address the complete learning profile of the individual. Unlike traditional tutoring, ET focuses on understanding <em>why</em> a student struggles and developing personalized strategies to address those root causes.</p>
+        <p>At Perspectives Group, our ET model emphasizes a holistic, integrative approach. We assess psychological, medical, and academic factors together, designing interventions that address the whole person &mdash; not just their academic performance.</p>
+        <p>The goal is not to compensate for weaknesses, but to build genuine, transferable skills that clients can deploy independently across every environment they encounter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--cream-warm)">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">Core Components</p>
+      <h2>What ET <em>Looks Like</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-card fade-in delay-1">
+        <div class="approach-number">01</div>
+        <h4>Learning Strategy Training</h4>
+        <p>We teach metacognitive strategies &mdash; how to plan, monitor, and evaluate one&rsquo;s own learning process &mdash; enabling clients to study and retain information more effectively.</p>
+      </div>
+      <div class="approach-card fade-in delay-2">
+        <div class="approach-number">02</div>
+        <h4>Academic Skill Remediation</h4>
+        <p>We address specific areas of difficulty, whether in reading comprehension, written expression, math fluency, or test-taking, using research-backed techniques.</p>
+      </div>
+      <div class="approach-card fade-in delay-3">
+        <div class="approach-number">03</div>
+        <h4>Executive Function Coaching</h4>
+        <p>Organization, time management, working memory, and planning are trained systematically &mdash; addressing the cognitive architecture beneath academic performance.</p>
+      </div>
+      <div class="approach-card fade-in delay-4">
+        <div class="approach-number">04</div>
+        <h4>Psycho-Social Support</h4>
+        <p>Learning challenges have an emotional dimension. We address confidence, motivation, anxiety around academic tasks, and self-concept alongside cognitive skills.</p>
+      </div>
+      <div class="approach-card fade-in delay-5">
+        <div class="approach-number">05</div>
+        <h4>Collaborative Coordination</h4>
+        <p>We communicate and coordinate with schools, psychiatrists, and other providers to ensure a unified, coherent approach to each client&rsquo;s growth.</p>
+      </div>
+      <div class="approach-card fade-in delay-1">
+        <div class="approach-number">06</div>
+        <h4>Transferable Life Skills</h4>
+        <p>Everything we teach is designed to generalize beyond our sessions &mdash; into classrooms, workplaces, and everyday life &mdash; building lasting independence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="content-split reverse">
+      <div class="content-split-text fade-in-left">
+        <p class="section-label">ET vs. Tutoring</p>
+        <h2>A Fundamentally <em>Different</em> Approach</h2>
+        <p>Traditional tutoring addresses content: the math problem, the history essay, tonight&rsquo;s homework. Educational therapy addresses the learner: how they process, store, retrieve, and apply information.</p>
+        <p>While a tutor might help a student complete an assignment, an educational therapist helps a student understand their own mind &mdash; so they can approach any assignment, in any subject, with greater confidence and competence.</p>
+        <p>This distinction matters most for students whose challenges stem from learning differences, attention difficulties, executive dysfunction, or emotional barriers to learning &mdash; precisely the populations we are trained to serve.</p>
+        <a class="btn btn-outline-dark" href="#" onclick="navigate('educational-therapy');return false;" style="margin-top:1rem;">Explore Our ET Service</a>
+      </div>
+      <img class="content-split-image fade-in-right" src="${IMG.et}" alt="Educational Therapy Session" loading="lazy">
+    </div>
+  </div>
+</section>
+`,
+
+'common-myths': () => `
+<div class="page-hero">
+  <div class="container">
+    <p class="page-hero-eyebrow">Educational Therapy</p>
+    <h1>Common Myths<br><em>About ADHD</em></h1>
+    <p>Misconceptions about ADHD are widespread and can prevent individuals from getting the support they need. Let&rsquo;s set the record straight.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">Myth vs. Reality</p>
+      <h2>What the Research <em>Actually</em> Shows</h2>
+      <p>ADHD is one of the most misunderstood neurodevelopmental conditions. These myths not only perpetuate stigma, they actively harm people who could benefit from proper support.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="myths-grid">
+      <div class="myth-card fade-in delay-1">
+        <div class="myth-label">Myth</div>
+        <h4>"ADHD is just a lack of willpower or discipline."</h4>
+        <div style="height:1px;background:var(--cream-dark);margin:1rem 0"></div>
+        <div class="reality-label">Reality</div>
+        <p>ADHD is a neurodevelopmental disorder with a strong genetic basis. It reflects differences in brain structure and function &mdash; particularly in areas governing executive function, attention regulation, and impulse control. Willpower alone cannot overcome these neurological differences.</p>
+      </div>
+      <div class="myth-card fade-in delay-2">
+        <div class="myth-label">Myth</div>
+        <h4>"Kids with ADHD can focus fine on video games &mdash; so they could focus in school if they tried."</h4>
+        <div style="height:1px;background:var(--cream-dark);margin:1rem 0"></div>
+        <div class="reality-label">Reality</div>
+        <p>Highly stimulating, immediately rewarding activities can briefly engage the ADHD brain through dopamine-driven hyperfocus. This doesn&rsquo;t mean the person can &ldquo;choose&rdquo; to focus on less stimulating tasks. The challenge is neurological, not motivational.</p>
+      </div>
+      <div class="myth-card fade-in delay-3">
+        <div class="myth-label">Myth</div>
+        <h4>"ADHD medication is just a crutch and will change my child&rsquo;s personality."</h4>
+        <div style="height:1px;background:var(--cream-dark);margin:1rem 0"></div>
+        <div class="reality-label">Reality</div>
+        <p>When appropriately prescribed, ADHD medication helps regulate dopamine and norepinephrine pathways &mdash; making the brain&rsquo;s own regulatory systems more effective. It doesn&rsquo;t alter personality; it helps individuals access the capabilities they already have.</p>
+      </div>
+      <div class="myth-card fade-in delay-4">
+        <div class="myth-label">Myth</div>
+        <h4>"ADHD is overdiagnosed &mdash; everyone has a little ADHD."</h4>
+        <div style="height:1px;background:var(--cream-dark);margin:1rem 0"></div>
+        <div class="reality-label">Reality</div>
+        <p>While everyone experiences inattention or impulsivity occasionally, ADHD is diagnosed only when these symptoms are persistent, pervasive across settings, and cause significant functional impairment. Many individuals, particularly women, remain chronically underdiagnosed.</p>
+      </div>
+      <div class="myth-card fade-in delay-1">
+        <div class="myth-label">Myth</div>
+        <h4>"Children grow out of ADHD by adulthood."</h4>
+        <div style="height:1px;background:var(--cream-dark);margin:1rem 0"></div>
+        <div class="reality-label">Reality</div>
+        <p>Research shows that ADHD persists into adulthood for the majority of those diagnosed in childhood. While hyperactivity may become less visible, the underlying executive function and attention challenges typically continue and require ongoing support and strategies.</p>
+      </div>
+      <div class="myth-card fade-in delay-2">
+        <div class="myth-label">Myth</div>
+        <h4>"ADHD is just anxiety or depression &mdash; treat that instead."</h4>
+        <div style="height:1px;background:var(--cream-dark);margin:1rem 0"></div>
+        <div class="reality-label">Reality</div>
+        <p>ADHD frequently co-occurs with anxiety and depression, but they are distinct conditions with distinct mechanisms. Treating comorbidities is important, but ignoring ADHD will leave core executive function and attention challenges unaddressed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dark-band">
+  <div class="container">
+    <h2>Have Questions?</h2>
+    <p>Our team can help you navigate the complexities of ADHD and related learning differences. We&rsquo;re here to provide clarity and compassionate support.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a class="btn btn-gold" href="#" onclick="navigate('contact');return false;">Contact Us</a>
+      <a class="btn btn-outline" href="#" onclick="navigate('faqs');return false;">View FAQs</a>
+    </div>
+  </div>
+</div>
+`,
+
+'educational-therapy': () => `
+<div class="page-hero">
+  <div class="container">
+    <p class="page-hero-eyebrow">Services</p>
+    <h1>Educational <em>Therapy</em></h1>
+    <p>A deeply personalized approach to changing not just what students know, but how they learn.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="content-split">
+      <img class="content-split-image fade-in-left" src="${IMG.etTherapy}" alt="Educational Therapy" loading="lazy">
+      <div class="content-split-text fade-in-right">
+        <p class="section-label">Our Approach</p>
+        <h2>Changing the <em>Relationship</em> with Learning</h2>
+        <p>We introduce students to resources, tools, strategies, and systems they can use to organize and manage their time, ideas, and materials &mdash; but more significantly, we help clients fundamentally change their approach to school and to themselves as learners.</p>
+        <p>Our educational therapy is personalized, beginning with a thorough assessment of psychological, medical, and academic factors to understand each client&rsquo;s full profile before designing effective interventions.</p>
+        <p>We incorporate cognitive-behavioral techniques to address procrastination, avoidance, and task management far beyond basic organizational tools. Sessions are designed to build real competence, not just coping mechanisms.</p>
+        <a class="btn btn-outline-dark" href="#" onclick="navigate('contact');return false;" style="margin-top:1.5rem;">Begin a Consultation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--cream-warm)">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">What We Address</p>
+      <h2>Comprehensive Support for <em>Every Learner</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-card fade-in delay-1">
+        <div class="approach-number">01</div>
+        <h4>Custom Assessment</h4>
+        <p>Educational therapy is personalized, assessing psychological, medical, and academic factors together to provide effective and cohesive strategies.</p>
+      </div>
+      <div class="approach-card fade-in delay-2">
+        <div class="approach-number">02</div>
+        <h4>Cognitive-Behavioral Techniques</h4>
+        <p>We incorporate CBT methods to address procrastination, avoidance, and task management &mdash; tackling the emotional architecture of academic struggle.</p>
+      </div>
+      <div class="approach-card fade-in delay-3">
+        <div class="approach-number">03</div>
+        <h4>Professional Collaboration</h4>
+        <p>Strong emphasis on teamwork with psychiatrists, psychologists, and educators to ensure comprehensive, coordinated client care.</p>
+      </div>
+      <div class="approach-card fade-in delay-4">
+        <div class="approach-number">04</div>
+        <h4>Wrap-Around Care</h4>
+        <p>A focus on holistic needs including psychological, medical, and academic dimensions &mdash; involving parents actively in the therapeutic process.</p>
+      </div>
+      <div class="approach-card fade-in delay-5">
+        <div class="approach-number">05</div>
+        <h4>Outcome-Oriented Sessions</h4>
+        <p>Sessions are designed to build genuine learning strategies and information management skills, not surface-level workarounds.</p>
+      </div>
+      <div class="approach-card fade-in delay-1">
+        <div class="approach-number">06</div>
+        <h4>Forward-Looking Goals</h4>
+        <p>We design every client&rsquo;s goals with their next developmental steps in mind, whether college, career, or independent living.</p>
+      </div>
+    </div>
+  </div>
+</section>
+`,
+
+'adult-et': () => `
+<div class="page-hero">
+  <div class="container">
+    <p class="page-hero-eyebrow">Services</p>
+    <h1>Adult Educational <em>Therapy</em></h1>
+    <p>Specialized support for adults navigating professional exams, executive functioning challenges, and the demands of modern working life.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="content-split">
+      <img class="content-split-image fade-in-left" src="${IMG.adultEtPage}" alt="Adult Educational Therapy" loading="lazy">
+      <div class="content-split-text fade-in-right">
+        <p class="section-label">Adult-Focused Care</p>
+        <h2>It&rsquo;s Never Too Late<br>to <em>Learn Differently</em></h2>
+        <p>Perspectives Group, founded by Karolina Saloun Claxton, EdD, is one of the very few educational therapy practices that comprehensively serves adult needs. Older adolescents and adults are frequently overlooked in conventional educational therapy &mdash; we exist, in part, to correct that gap.</p>
+        <p>Our adult clients include young people who have struggled to succeed in college, as well as midlife adults struggling to pass professional licensing exams due to learning differences they may have carried &mdash; unaddressed &mdash; their entire lives.</p>
+        <p>Skill development is attainable at any age. Our adult therapy emphasizes efficiency and productivity in professional and personal contexts, equipping clients with strategies grounded in cognitive science rather than generic advice.</p>
+        <a class="btn btn-outline-dark" href="#" onclick="navigate('contact');return false;" style="margin-top:1.5rem;">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--cream-warm)">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">Who We Help</p>
+      <h2>Adult Clients We <em>Serve</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-card fade-in delay-1">
+        <div class="approach-number">01</div>
+        <h4>College Students</h4>
+        <p>Students who excelled in high school but find college demands overwhelming &mdash; often for the first time encountering their learning differences without external scaffolding.</p>
+      </div>
+      <div class="approach-card fade-in delay-2">
+        <div class="approach-number">02</div>
+        <h4>Professional Exam Candidates</h4>
+        <p>Adults preparing for bar exams, medical boards, CPA exams, and other high-stakes professional licensing tests who need structured, intensive study support.</p>
+      </div>
+      <div class="approach-card fade-in delay-3">
+        <div class="approach-number">03</div>
+        <h4>Working Professionals</h4>
+        <p>Individuals struggling with executive functioning, productivity, time management, or focus in their careers &mdash; often dealing with undiagnosed ADHD or learning differences.</p>
+      </div>
+      <div class="approach-card fade-in delay-4">
+        <div class="approach-number">04</div>
+        <h4>Home Life Management</h4>
+        <p>Adults who find the administrative and executive demands of managing a household, family, or personal responsibilities persistently challenging and depleting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+`,
+
+'cognitive-rehabilitation': () => `
+<div class="page-hero">
+  <div class="container">
+    <p class="page-hero-eyebrow">Services</p>
+    <h1>Cognitive <em>Rehabilitation</em></h1>
+    <p>Rebuilding and sharpening cognitive skills for individuals recovering from neurological events or seeking to optimize their mental performance.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="content-split">
+      <img class="content-split-image fade-in-left" src="${IMG.cogRehabPage}" alt="Cognitive Rehabilitation" loading="lazy">
+      <div class="content-split-text fade-in-right">
+        <p class="section-label">Rebuilding Capacity</p>
+        <h2>Restoring Cognitive <em>Strength</em></h2>
+        <p>Cognitive rehabilitation is a therapeutic process designed to rebuild cognitive and executive functioning skills following a brain injury, a significant gap in psychological stimulation, or any event that has disrupted normal cognitive function.</p>
+        <p>Our approach is based on neuroplasticity research &mdash; the understanding that the brain can form new pathways and compensatory strategies when given the right kind of structured, targeted support.</p>
+        <p>We also offer cognitive rehabilitation for individuals who have not experienced a specific neurological event but who want to fine-tune and sharpen existing cognitive capabilities for peak performance in demanding professional or academic contexts.</p>
+        <a class="btn btn-outline-dark" href="#" onclick="navigate('contact');return false;" style="margin-top:1.5rem;">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--cream-warm)">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">Areas of Focus</p>
+      <h2>What We <em>Rehabilitate</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-card fade-in delay-1">
+        <div class="approach-number">01</div>
+        <h4>Attention &amp; Concentration</h4>
+        <p>Rebuilding the capacity to sustain and direct attention, filtering distractions, and maintaining focus over extended periods of cognitive work.</p>
+      </div>
+      <div class="approach-card fade-in delay-2">
+        <div class="approach-number">02</div>
+        <h4>Memory Systems</h4>
+        <p>Addressing working memory, encoding, storage, and retrieval &mdash; developing compensatory strategies and rebuilding natural mnemonic function where possible.</p>
+      </div>
+      <div class="approach-card fade-in delay-3">
+        <div class="approach-number">03</div>
+        <h4>Executive Function</h4>
+        <p>Planning, organizing, initiating, monitoring, and completing multi-step tasks &mdash; the cognitive management systems that govern effective daily functioning.</p>
+      </div>
+      <div class="approach-card fade-in delay-4">
+        <div class="approach-number">04</div>
+        <h4>Processing Speed</h4>
+        <p>Supporting individuals whose information processing has slowed following neurological events, helping them develop efficient strategies to compensate and rebuild.</p>
+      </div>
+    </div>
+  </div>
+</section>
+`,
+
+workshops: () => `
+<div class="page-hero">
+  <div class="container">
+    <p class="page-hero-eyebrow">Services</p>
+    <h1><em>Workshops</em></h1>
+    <p>Interactive, problem-based learning for educators, parents, and organizations &mdash; breaking complex topics into actionable steps.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="content-split">
+      <img class="content-split-image fade-in-left" src="${IMG.workshops}" alt="Workshops" loading="lazy">
+      <div class="content-split-text fade-in-right">
+        <p class="section-label">Professional Development</p>
+        <h2>Building Skills in <em>Educators</em> and Families</h2>
+        <p>Perspectives Group&rsquo;s workshops use an interactive, problem-based approach to break topics and their real-world applications into manageable action steps. We design workshops for school faculties, parent groups, healthcare teams, and organizational leadership.</p>
+        <p>Our workshops are not passive lectures. They are collaborative learning experiences grounded in research, delivered by practitioners who do this work every day. Participants leave with tools they can implement immediately.</p>
+        <p>We can customize workshop content, duration, and format to meet your organization&rsquo;s specific needs and populations.</p>
+        <a class="btn btn-outline-dark" href="#" onclick="navigate('contact');return false;" style="margin-top:1.5rem;">Inquire About Workshops</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--cream-warm)">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">Workshop Topics</p>
+      <h2>What We <em>Teach</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="workshop-topics fade-in delay-1">
+      <div class="workshop-topic" data-num="1">Differentiation for Diverse Learners</div>
+      <div class="workshop-topic" data-num="2">Supporting Developing Executive Functions</div>
+      <div class="workshop-topic" data-num="3">Understanding, Accommodating, and Remediating Language Disorders</div>
+      <div class="workshop-topic" data-num="4">The Nitty Gritty of Goals: Measurable, Aligned Learning Objectives</div>
+      <div class="workshop-topic" data-num="5">Preparation for 21st Century Skills and Careers</div>
+      <div class="workshop-topic" data-num="6">Cognitive Load in Learning: The Role of Working Memory</div>
+      <div class="workshop-topic" data-num="7">The Five Levels of Collaboration</div>
+      <div class="workshop-topic" data-num="8">Formative Assessment to Inform Instruction</div>
+      <div class="workshop-topic" data-num="9">Homework: Independent Practice vs. Flipped Instruction</div>
+      <div class="workshop-topic" data-num="10">Myths about ADHD: Classroom Manifestations of the Neuroscience</div>
+    </div>
+  </div>
+</section>
+`,
+
+'skills-groups': () => `
+<div class="page-hero">
+  <div class="container">
+    <p class="page-hero-eyebrow">Services</p>
+    <h1>Skills <em>Groups</em></h1>
+    <p>Targeted group work toward shared goals &mdash; where community and capability grow together.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="content-split">
+      <img class="content-split-image fade-in-left" src="${IMG.skillsGroups}" alt="Skills Groups" loading="lazy">
+      <div class="content-split-text fade-in-right">
+        <p class="section-label">Small Group Therapy</p>
+        <h2>Shared Goals,<br><em>Real Results</em></h2>
+        <p>Skills groups target specific common goals and work toward achieving them in a small, collaborative group setting. Groups are carefully composed so that members share meaningful similarities in their challenges, age range, and goals.</p>
+        <p>The group setting offers something individual therapy cannot: the recognition that you are not alone. Clients frequently report that hearing peers articulate their own struggles provides profound relief and renewed motivation.</p>
+        <p>Groups also build the social-cognitive skills &mdash; perspective-taking, collaborative problem-solving, communication &mdash; that are essential for navigating academic and professional environments.</p>
+        <a class="btn btn-outline-dark" href="#" onclick="navigate('contact');return false;" style="margin-top:1.5rem;">Inquire About Groups</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--cream-warm)">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">Group Types</p>
+      <h2>Current Skills <em>Group Offerings</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-card fade-in delay-1">
+        <div class="approach-number">01</div>
+        <h4>Executive Function Groups</h4>
+        <p>For children and adolescents working on organization, time management, planning, and task initiation &mdash; the foundational skills for academic success.</p>
+      </div>
+      <div class="approach-card fade-in delay-2">
+        <div class="approach-number">02</div>
+        <h4>Study Skills &amp; Habits</h4>
+        <p>Structured skill-building in note-taking, reading strategies, test preparation, and long-term project management.</p>
+      </div>
+      <div class="approach-card fade-in delay-3">
+        <div class="approach-number">03</div>
+        <h4>Social-Cognitive Skills</h4>
+        <p>Groups targeting perspective-taking, conversational reciprocity, reading social cues, and navigating peer relationships.</p>
+      </div>
+      <div class="approach-card fade-in delay-4">
+        <div class="approach-number">04</div>
+        <h4>Adult Productivity Groups</h4>
+        <p>For adults seeking community alongside individual skill-building in executive function, time management, and professional productivity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+`,
+
+'treatment-consultation': () => `
+<div class="page-hero">
+  <div class="container">
+    <p class="page-hero-eyebrow">Services</p>
+    <h1>Treatment <em>Consultation</em></h1>
+    <p>For complex cases requiring coordinated care, we serve as case carriers, consultants, and coordinators across every dimension of a client&rsquo;s support system.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="content-split">
+      <img class="content-split-image fade-in-left" src="${IMG.treatmentPage}" alt="Treatment Consultation" loading="lazy">
+      <div class="content-split-text fade-in-right">
+        <p class="section-label">Complex Case Management</p>
+        <h2>Full Spectrum <em>Care Coordination</em></h2>
+        <p>For some clients &mdash; whether we conduct direct educational therapy or not &mdash; the most valuable service we can provide is to work as the hub of a broader care team. We serve as case carriers, consultants, and coordinators across the full spectrum of a client&rsquo;s professional support network.</p>
+        <p>This might mean consulting with a school&rsquo;s IEP team, training a psychiatrist in a client&rsquo;s specific learning profile, advising on academic accommodations, or helping a family navigate complex placement decisions.</p>
+        <p>Treatment consultation is available to families, schools, medical practices, and other organizations seeking expert guidance on supporting individuals with complex neurodevelopmental or learning profiles.</p>
+        <a class="btn btn-outline-dark" href="#" onclick="navigate('contact');return false;" style="margin-top:1.5rem;">Request a Consultation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--cream-warm)">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">Consultation Areas</p>
+      <h2>What We <em>Offer</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-card fade-in delay-1">
+        <div class="approach-number">01</div>
+        <h4>School Team Training</h4>
+        <p>Training school teams &mdash; teachers, counselors, administrators &mdash; in a specific client&rsquo;s neurocognitive profile and evidence-based accommodations.</p>
+      </div>
+      <div class="approach-card fade-in delay-2">
+        <div class="approach-number">02</div>
+        <h4>IEP &amp; 504 Consultation</h4>
+        <p>Expert guidance on developing, reviewing, and advocating for appropriate individualized education and accommodation plans.</p>
+      </div>
+      <div class="approach-card fade-in delay-3">
+        <div class="approach-number">03</div>
+        <h4>Academic Placement</h4>
+        <p>Consultation on school placement decisions for students whose needs may not be met by current programs &mdash; including private school evaluation support.</p>
+      </div>
+      <div class="approach-card fade-in delay-4">
+        <div class="approach-number">04</div>
+        <h4>Home Productivity Analysis</h4>
+        <p>In-home or remote consultation with families on environmental modifications and systems to support learning, organization, and self-regulation at home.</p>
+      </div>
+      <div class="approach-card fade-in delay-5">
+        <div class="approach-number">05</div>
+        <h4>Curriculum Consultation</h4>
+        <p>For homeschooling families, guidance on selecting, adapting, and implementing curriculum that matches a child&rsquo;s neurocognitive profile and learning style.</p>
+      </div>
+      <div class="approach-card fade-in delay-1">
+        <div class="approach-number">06</div>
+        <h4>Professional Development</h4>
+        <p>Consultation and training for healthcare providers, educators, and organizations seeking to better understand and serve clients with learning differences.</p>
+      </div>
+    </div>
+  </div>
+</section>
+`,
+
+testimonials: () => `
+<div class="page-hero">
+  <div class="container">
+    <p class="page-hero-eyebrow">Words from Our Clients</p>
+    <h1>What Our Clients <em>Say</em></h1>
+    <p>The measure of our work is the change we facilitate &mdash; in confidence, capability, and quality of life.</p>
+  </div>
+</div>
+
+<section class="section testimonials-section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">Testimonials</p>
+      <h2>Voices of <em>Transformation</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card fade-in delay-1">
+        <p>It is Karolina&rsquo;s deep understanding of teens and her kindness to them that truly makes her special. Beyond her obvious competence and brilliance, it is her kindness that we value most of all. Karolina is such an important part of the team that supports and guides my daughter through these crucial years. She made such a difference in her experience.</p>
+        <div class="testimonial-author">Parent of a client</div>
+      </div>
+      <div class="testimonial-card fade-in delay-2">
+        <p>I cannot thank Dr. Karolina Claxton enough for her thought-provoking, informative, timely, and highly engaging webinar presentation regarding the relationships amongst learning, motivation, and performance. She not only offered neurological, biochemical and psychological models and explanations for the various processes, but did so in a way that all the adults and children in the H-W community could understand and use.</p>
+        <div class="testimonial-author">Grace Brown, Director of the Upper School Learning Center at Harvard-Westlake School</div>
+      </div>
+      <div class="testimonial-card fade-in delay-3">
+        <p>Dr. Karolina Claxton is a brilliant clinician, interdisciplinary team member, and public speaker. She provided our organization with an extremely well-informed, thorough, and professional presentation that provided our audience with new insights into parenting.</p>
+        <div class="testimonial-author">Georgia Weston, MSW, Executive Director of Creative Healing for Youth in Pain</div>
+      </div>
+      <div class="testimonial-card fade-in delay-4">
+        <p>My daughter is loving the work she is doing with Perspectives Group. Whatever the result, her composure and confidence seem totally altered already. It seems that giving her some tangible tools are removing the stress or at least the anxiety about the work. I&rsquo;m thrilled we came in!</p>
+        <div class="testimonial-author">Parent of a client</div>
+      </div>
+      <div class="testimonial-card fade-in delay-5">
+        <p>My daughter is doing so fantastically well thanks to Perspectives Group. Most importantly, she was so proud of herself. She has worked so hard and with the help and skills Karolina taught her, she really ended the year well. The skills my daughter has learned will be with her from now on.</p>
+        <div class="testimonial-author">Parent of a client</div>
+      </div>
+      <div class="testimonial-card fade-in delay-1">
+        <p>From the moment we first met Karolina, we felt a tremendous sense of relief. She offered us hope that there was someone on our team that really understood him, as well as a path for which to get him through the challenging road of high school. She taught him essential organizing skills and critical techniques for essay writing and reading, but, more importantly, she gave him the belief that he could get through the anxiety and overwhelm. She has had a profound impact on our life.</p>
+        <div class="testimonial-author">Parent of a client</div>
+      </div>
+      <div class="testimonial-card fade-in delay-2">
+        <p>Karolina is an elegant and persuasive writer. I especially appreciated the way she captured our concerns in a more psychologically sophisticated way.</p>
+        <div class="testimonial-author">Susan Staraci, M.A., LMFT</div>
+      </div>
+      <div class="testimonial-card fade-in delay-3">
+        <p>What incredible progress my daughter has made with Jenny!! I am blown away. Truly. She has made a huge difference in her life.</p>
+        <div class="testimonial-author">Parent of a client</div>
+      </div>
+      <div class="testimonial-card fade-in delay-4">
+        <p>We truly are so happy to have Karolina in our child&rsquo;s life. My daughter came into the car and spoke for the entire ride home about the framework for thinking about school. She is able to connect dots and make deeper thoughts thanks to Karolina&rsquo;s validation and connection. She told me last night that she cannot believe how accomplished she feels. Flowers pale in comparison to our thanks.</p>
+        <div class="testimonial-author">Parent of a client</div>
+      </div>
+      <div class="testimonial-card fade-in delay-5">
+        <p>We can&rsquo;t thank Karolina enough for always truly seeing our daughter and most of all, for helping me open my heart so I truly see her.</p>
+        <div class="testimonial-author">Parent of a client</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dark-band">
+  <div class="container">
+    <h2>Experience the Difference</h2>
+    <p>We&rsquo;d be honored to begin this journey with you or your family.</p>
+    <a class="btn btn-gold" href="#" onclick="navigate('contact');return false;">Get in Touch</a>
+  </div>
+</div>
+`,
+
+faqs: () => `
+<div class="page-hero">
+  <div class="container">
+    <p class="page-hero-eyebrow">Words from Our Clients</p>
+    <h1>Frequently Asked <em>Questions</em></h1>
+    <p>Answers to the questions we hear most often from families, adults, and professionals considering Perspectives Group.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="faq-list fade-in">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What is the difference between educational therapy and tutoring?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Traditional tutoring focuses on content &mdash; helping a student complete specific assignments or understand specific material. Educational therapy addresses the underlying processes that make learning difficult &mdash; attention, executive function, memory, processing, emotional barriers &mdash; and builds the transferable skills that allow students to succeed across all subjects and contexts. An educational therapist is trained to understand neurocognitive profiles in ways that a subject-matter tutor typically is not.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Does my child need a diagnosis to work with Perspectives Group?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            No. Many of our clients arrive without formal diagnoses. We specialize in neurocognitive profiles that do not fit neatly into diagnostic categories &mdash; individuals who experience significant challenges but may not meet full diagnostic criteria for a named disorder. We work from the profile we observe and assess, not from a diagnostic label.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do you work with adults?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes &mdash; and this is one of the things that sets Perspectives Group apart. We are one of the few educational therapy practices that comprehensively serves adult needs. Our adult clients include college students, young professionals, individuals preparing for professional licensing exams, and midlife adults struggling with executive functioning in work and home contexts. Skill development is possible at any age.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How long does educational therapy take?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Duration varies significantly by client. Some clients work with us intensively for six to twelve months and achieve their goals. Others maintain an ongoing relationship as they move through new developmental stages that present new challenges. We do not have a standard program length; instead, we continuously evaluate progress and adjust goals accordingly in collaboration with clients and families.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do you collaborate with our child&rsquo;s school or other providers?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes. We place strong emphasis on collaborative care. With appropriate consent, we communicate with teachers, school counselors, psychiatrists, psychologists, speech-language pathologists, and other providers involved in a client&rsquo;s care. For clients who need full care coordination, we offer Treatment Consultation services where we act as the hub of the care team.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do you accept insurance?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            We are a private-pay practice. We do not accept insurance directly, but we can provide detailed invoices (superbills) that you may submit to your insurance provider for potential out-of-network reimbursement. We encourage you to contact your insurance provider to understand your out-of-network benefits prior to beginning services.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I get started?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            The first step is to reach out to us via phone or email. We&rsquo;ll schedule an initial consultation to discuss your situation, goals, and how Perspectives Group might be able to help. From there, we&rsquo;ll design an appropriate intake process &mdash; which may include a comprehensive assessment &mdash; and develop a customized plan together.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Where are you located, and do you offer remote services?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Our office is located at 12301 Wilshire Boulevard, Suite 514, Los Angeles, CA 90025 &mdash; in the heart of the Brentwood/West LA area. Please contact us directly for current information about our availability for in-person versus remote or telehealth sessions, which varies by service type and clinician.
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:4rem" class="fade-in">
+      <p style="margin-bottom:1.5rem;color:#6a5868">Have a question that isn&rsquo;t answered here?</p>
+      <a class="btn btn-primary" href="#" onclick="navigate('contact');return false;">Contact Us Directly</a>
+    </div>
+  </div>
+</section>
+`,
+
+contact: () => `
+<div class="page-hero">
+  <div class="container">
+    <p class="page-hero-eyebrow">Connect with Us</p>
+    <h1>Get in <em>Touch</em></h1>
+    <p>We&rsquo;d love to hear from you. Reach out to learn more or to schedule an initial consultation.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info fade-in-left">
+        <p class="section-label">Contact Information</p>
+        <h3>Perspectives <em>Group</em></h3>
+        <div class="divider" style="margin:1.5rem 0;margin-left:0"></div>
+        <div class="contact-block">
+          <div class="label">Address</div>
+          <p>12301 Wilshire Boulevard, Suite 514<br>Los Angeles, CA 90025</p>
+        </div>
+        <div class="contact-block">
+          <div class="label">Phone</div>
+          <p><a href="tel:4248327978" style="color:var(--plum-mid)">(424) 832-7978</a></p>
+        </div>
+        <div class="contact-block">
+          <div class="label">Email</div>
+          <p><a href="mailto:info@perspectivesed.com" style="color:var(--plum-mid)">info@perspectivesed.com</a></p>
+        </div>
+        <div class="contact-block">
+          <div class="label">Hours</div>
+          <p>Monday &ndash; Saturday<br>Treatment hours vary by appointment</p>
+        </div>
+        <div style="margin-top:2.5rem;padding:2rem;background:var(--cream-warm);border:1px solid var(--cream-dark)">
+          <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:var(--plum-mid);margin:0">"Please feel free to reach out. We&rsquo;d be happy to hear from you."</p>
+          <p style="margin-top:0.8rem;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0">Dr. Karolina Claxton</p>
+        </div>
+      </div>
+      <div class="fade-in-right">
+        <div class="contact-form">
+          <p class="section-label" style="margin-bottom:2rem">Send a Message</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" placeholder="Jane">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" placeholder="Smith">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="jane@example.com">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number (optional)</label>
+            <input type="tel" id="phone" placeholder="(310) 000-0000">
+          </div>
+          <div class="form-group">
+            <label for="service">Area of Interest</label>
+            <input type="text" id="service" placeholder="e.g., Educational Therapy for my child, Adult ET, Workshops...">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell us a bit about what you&rsquo;re looking for and how we can help..."></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="handleFormSubmit(event)" style="width:100%;justify-content:center">Send Message</button>
+          <p style="font-size:0.78rem;color:var(--text-muted);margin-top:1rem;text-align:center">We typically respond within one business day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm" style="background:var(--plum)">
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem">
+      <div>
+        <p style="color:var(--gold);font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.5rem">Our Location</p>
+        <h3 style="color:var(--cream);font-size:1.6rem">12301 Wilshire Boulevard, Suite 514</h3>
+        <p style="color:rgba(255,254,245,0.55)">Brentwood / West Los Angeles, CA 90025</p>
+      </div>
+      <a href="https://maps.google.com/?q=12301+Wilshire+Blvd+Suite+514+Los+Angeles+CA+90025" target="_blank" class="btn btn-outline" style="white-space:nowrap">View on Map &rarr;</a>
+    </div>
+  </div>
+</section>
+`
+
+};
+
+// ============ ROUTER ============
+
+let currentPage = 'home';
+
+function navigate(page) {
+  const app = document.getElementById('app');
+  app.classList.add('leaving');
+  setTimeout(() => {
+    currentPage = page;
+    const pageGen = pages[page];
+    if (!pageGen) {
+      app.innerHTML = `<div style="padding:10rem 2rem;text-align:center"><h2>Page coming soon</h2></div>`;
+    } else {
+      app.innerHTML = pageGen();
+    }
+    app.classList.remove('leaving');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    initPage();
+  }, 280);
+}
+
+function initPage() {
+  // Scroll observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+    observer.observe(el);
+  });
+
+  // Hero bg parallax & load
+  const heroBg = document.getElementById('heroBg');
+  if (heroBg) {
+    setTimeout(() => heroBg.classList.add('loaded'), 100);
+    window.addEventListener('scroll', () => {
+      if (heroBg) {
+        const y = window.scrollY * 0.25;
+        heroBg.style.transform = `scale(1) translateY(${y}px)`;
+      }
+    });
+  }
+}
+
+// ============ MOBILE MENU ============
+function toggleMobile() {
+  const menu = document.getElementById('mobileMenu');
+  const burger = document.getElementById('burger');
+  menu.classList.toggle('open');
+  burger.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+
+// ============ NAV SCROLL ============
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if (window.scrollY > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// ============ FAQ TOGGLE ============
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const answer = item.querySelector('.faq-answer');
+  const isOpen = item.classList.contains('open');
+
+  // Close all
+  document.querySelectorAll('.faq-item.open').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-answer').style.maxHeight = '0';
+  });
+
+  if (!isOpen) {
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+}
+
+// ============ CONTACT FORM ============
+function handleFormSubmit(e) {
+  e.preventDefault();
+  const btn = e.target;
+  btn.textContent = 'Message Sent!';
+  btn.style.background = 'var(--gold)';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Send Message';
+    btn.style.background = '';
+    btn.disabled = false;
+  }, 3000);
+}
+
+
+// ============ LUXURY CURSOR ============
+(function() {
+  const dot  = document.getElementById('lux-cursor');
+  const ring = document.getElementById('lux-cursor-ring');
+  if (!dot || !ring) return;
+  let rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    dot.style.left  = e.clientX + 'px';
+    dot.style.top   = e.clientY + 'px';
+    // ring follows with slight lag via rAF
+    rx += (e.clientX - rx) * 0.15;
+    ry += (e.clientY - ry) * 0.15;
+  });
+  function animateRing() {
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+  document.addEventListener('mouseover', e => {
+    const el = e.target.closest('a, button, .service-card, .team-card, .faq-question, input, textarea, .btn');
+    if (el) {
+      dot.style.transform  = 'translate(-50%,-50%) scale(2.2)';
+      ring.style.width     = '52px';
+      ring.style.height    = '52px';
+      ring.style.borderColor = 'rgba(190,154,82,0.65)';
+    }
+  });
+  document.addEventListener('mouseout', e => {
+    const el = e.target.closest('a, button, .service-card, .team-card, .faq-question, input, textarea, .btn');
+    if (el) {
+      dot.style.transform  = 'translate(-50%,-50%) scale(1)';
+      ring.style.width     = '32px';
+      ring.style.height    = '32px';
+      ring.style.borderColor = 'rgba(190,154,82,0.45)';
+    }
+  });
+})();
+
+// ============ INIT ============
+navigate('home');
+</script>
+</body>
+</html>
